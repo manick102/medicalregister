@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Medical History</title>
+    <style type="text/css">
+        table {
+          border-collapse: collapse;
+          width: 80%;
+        }
+        th, td {
+          border: 1px solid #999999;
+          padding: 8px;
+        }
+        th {
+          background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h2 th:text="'Medical History of ' + ${patient.name}">Medical History</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Created</th>
+        <th>Reason</th>
+    </tr>
+    </thead>
+    <tbody>
+    <p th:if="${#lists.isEmpty(historyList)}">No history available.</p>
+    <tr th:each="record : ${historyList}">
+        <td th:text="${#temporals.format(record.created, 'yyyy-MM-dd')}">Created</td>
+        <td th:text="${record.reason}">Reason</td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<a th:href="@{/patients/{id}/medicalHistory/create(id=${patient.id})}">Create Medical History</a>
+<br />
+<a th:href="@{/patientslist}">Back to Patient List</a>
+</body>
+</html>

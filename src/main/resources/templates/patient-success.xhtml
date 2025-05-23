@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration Success</title>
+</head>
+<body>
+<h2>Patient Registered Successfully!</h2>
+<p>Name: <span th:text="${patient.name}"></span></p>
+<p>Age: <span th:text="${patient.age}"></span></p>
+
+<br/>
+<a href="/patientslist">Go To Patients List</a>
+</body>
+</html>
