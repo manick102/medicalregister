@@ -67,9 +67,11 @@ public class PatientXhtmlController {
                                        @ModelAttribute MedicalHistory medicalHistory, Model model) {
         Patient patient = service.getPatientById(id).get();
 
-        medicalHistory.setPatient(patient);
-
-        medicalHistoryService.saveMedicalHistory(medicalHistory);
+        MedicalHistory mHistory = new MedicalHistory();
+        mHistory.setPatient(patient);
+        mHistory.setReason(medicalHistory.getReason());
+        mHistory.setCreated(medicalHistory.getCreated());
+        medicalHistoryService.saveMedicalHistory(mHistory);
 
         return "redirect:/patients/" + id + "/medicalHistory/view"; // Redirect to view page
     }

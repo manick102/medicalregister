@@ -11,6 +11,7 @@ import java.time.LocalDate;
 public class MedicalHistory {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "REASON")
